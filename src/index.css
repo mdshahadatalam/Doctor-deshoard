@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+
+
+
+.allDocNav{
+    font-weight: 400;
+    font-size: 16px;
+    color: #4b5563;
+    border: 1px solid #b4b4b4;
+    border-radius: 8px;
+    width: 200px;
+    height: 49px;
+    background: #fff;
+    transition: 0.5s;
+    }
+
+    .allDocNav:hover{
+        background-color: #d2cdcd;
+        transform: scale(0.9);
+        transition: 0.5s;
+    }
