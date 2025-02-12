@@ -130,7 +130,7 @@ useEffect(()=>{
                                     list.map((item,index)=>(
                                         <tr>
                                         <td>{index +1}</td>
-                                        <td><img src="https://via.placeholder.com/40" alt="Profile"/></td>
+                                        <td><img width={60} src={`http://localhost:3000/${item.img}`} alt="Profile"/></td>
                                         <td>{item.name}</td>
                                         <td>Booking by {item.date}</td>
                                         <td><button class="delete-btn" onClick={()=>{handleDelete(item)}}>✖</button></td>

@@ -34,12 +34,12 @@ export const Appointment = () => {
      console.log(data.data)
      setList(data.data)
      // console.log(data.data.length);
-     setNum(data.data.length)
-     
+     setNum(data.data.length)    
      
     }
     data()
  },[])
+ 
  
   return (
     <>
@@ -65,7 +65,7 @@ export const Appointment = () => {
                                     list.map((item,index)=>(
                                         <tr>
                                         <td>{index +1}</td>
-                                        <td><img src="https://via.placeholder.com/40" alt="Profile"/></td>
+                                         <td><img src={`http://localhost:3000/${item.img}`} alt="" /></td>
                                         <td>{item.name}</td>
                                         <td>Booking by {item.date}</td>
                                         <td>{item.docName}</td>
