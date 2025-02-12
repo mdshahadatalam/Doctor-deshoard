@@ -1,10 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Deshboard.css'
 import img1 from '../assets/images/dashboard/appointments_icon.svg'
 import img2 from '../assets/images/dashboard/doctor_icon.svg'
 import img3 from '../assets/images/dashboard/patients_icon.svg'
+import axios from 'axios'
 
 export const Deshboard = () => {
+
+  const [list,setList] = useState([])
+  const [num,setNum] = useState("")
+
+ const handleDelete =(item)=>{
+   console.log(item._id);
+   
+    axios.delete(`http://localhost:3000/appointDelete/${item._id}`).then(res=>{
+        console.log(res)
+        async function data(){
+            const data = await axios.get('http://localhost:3000/appointmentItem')
+            console.log(data.data)
+            setList(data.data)
+            
+           }
+           data()
+
+    }).catch(err=>{
+        console.log(err)
+
+         
+    })
+
+ }
+
+
+
+
+
+useEffect(()=>{
+   async function data(){
+    const data = await axios.get('http://localhost:3000/appointmentItem')
+    console.log(data.data)
+    setList(data.data)
+    // console.log(data.data.length);
+    setNum(data.data.length)
+    
+    
+   }
+   data()
+},[])
+
+
   return (
    <>
       <section>
@@ -29,7 +73,7 @@ export const Deshboard = () => {
                               </div>
 
                                 <div className='ps-3'>
-                                    <span className='num'>2</span>
+                                    <span className='num'>{num}</span>
                                     <p className='doc'>Appointments</p>
                                 </div>
                           </div>
@@ -60,6 +104,7 @@ export const Deshboard = () => {
                           <table>
                             <thead>
                                 <tr>
+                                     <th>Sr</th>
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Title</th>
@@ -67,18 +112,18 @@ export const Deshboard = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><img src="https://via.placeholder.com/40" alt="Profile"/></td>
-                                    <td>John Doe</td>
-                                    <td>Software Engineer</td>
-                                    <td><button class="delete-btn" onclick="removeRow(this)">✖</button></td>
-                                </tr>
-                                <tr>
-                                    <td><img src="https://via.placeholder.com/40" alt="Profile"/></td>
-                                    <td>Jane Smith</td>
-                                    <td>Product Manager</td>
-                                    <td><button class="delete-btn" onclick="removeRow(this)">✖</button></td>
-                                </tr>
+                                {
+                                    list.map((item,index)=>(
+                                        <tr>
+                                        <td>{index +1}</td>
+                                        <td><img src="https://via.placeholder.com/40" alt="Profile"/></td>
+                                        <td>{item.name}</td>
+                                        <td>Booking by {item.date}</td>
+                                        <td><button class="delete-btn" onClick={()=>{handleDelete(item)}}>✖</button></td>
+                                    </tr>
+                                    ))
+                                }
+                                
                             </tbody>
                         </table>
                   </div>
