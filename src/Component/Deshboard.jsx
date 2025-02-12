@@ -9,6 +9,7 @@ export const Deshboard = () => {
 
   const [list,setList] = useState([])
   const [num,setNum] = useState("")
+  const [docNum,setDocNum] = useState("")
 
  const handleDelete =(item)=>{
    console.log(item._id);
@@ -38,7 +39,7 @@ export const Deshboard = () => {
 useEffect(()=>{
    async function data(){
     const data = await axios.get('http://localhost:3000/appointmentItem')
-    console.log(data.data)
+    // console.log(data.data)
     setList(data.data)
     // console.log(data.data.length);
     setNum(data.data.length)
@@ -46,6 +47,19 @@ useEffect(()=>{
     
    }
    data()
+},[])
+
+
+
+// doctor list  data
+
+useEffect(()=>{
+    async function data(){
+        const data = await axios.get('http://localhost:3000/addDocItem')
+        // console.log(data.data)
+        setDocNum(data.data.length)
+    }
+    data()
 },[])
 
 
@@ -61,7 +75,7 @@ useEffect(()=>{
                               </div>
 
                                 <div className='ps-3'>
-                                    <span className='num'>14</span>
+                                    <span className='num'>{docNum}</span>
                                     <p className='doc'>Doctors</p>
                                 </div>
                           </div>
