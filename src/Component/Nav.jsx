@@ -1,9 +1,8 @@
 import React from 'react'
 import logo from '../assets/images/doctor/doc.svg'
-import { useState } from 'react'
+
 
 export const Nav = () => {
-        const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   return (
   <>
       <section>

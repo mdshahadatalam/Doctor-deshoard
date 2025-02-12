@@ -1,0 +1,46 @@
+.num{
+font-weight: 500;
+font-size: 24px;
+color: #515151;
+}
+
+.doc{
+font-weight: 400;
+font-size: 16px;
+color: #8893b0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f4f4f4;
+}
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.delete-btn {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 18px;
+    cursor: pointer;
+}
+.delete-btn:hover {
+    color: darkred;
+}
+
+.latest{
+font-weight: 500;
+font-size: 18px;
+color: #323232;
+}
