@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Deshboard.css'
+import { toast, ToastContainer } from 'react-toastify'
 
 export const Appointment = () => {
      const [list,setList] = useState([])
@@ -11,16 +12,43 @@ export const Appointment = () => {
     
      axios.delete(`https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointDelete/${item._id}`).then(res=>{
          console.log(res)
+
+
+         toast.success('Successfully Delete', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Bounce,
+          });
+
+
+
          async function data(){
              const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointmentItem')
              console.log(data.data)
              setList(data.data)
              
             }
-            data()
+                       data()
  
      }).catch(err=>{
          console.log(err)
+         toast.error('Try again', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          // transition: Bounce,
+          });
  
           
      })
@@ -80,6 +108,9 @@ export const Appointment = () => {
                   </div>
          </div>
       </section>
+
+
+      <ToastContainer/>
     </>
   )
 }

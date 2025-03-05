@@ -4,6 +4,7 @@ import img1 from '../assets/images/dashboard/appointments_icon.svg'
 import img2 from '../assets/images/dashboard/doctor_icon.svg'
 import img3 from '../assets/images/dashboard/patients_icon.svg'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
 
 export const Deshboard = () => {
 
@@ -16,6 +17,21 @@ export const Deshboard = () => {
    
     axios.delete(`https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointDelete/${item._id}`).then(res=>{
         console.log(res)
+
+        toast.success('Successfully Delete', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+            });
+
+
+
         async function data(){
             const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointmentItem')
             console.log(data.data)
@@ -26,6 +42,17 @@ export const Deshboard = () => {
 
     }).catch(err=>{
         console.log(err)
+        toast.error('Try again', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+            });
 
          
     })
@@ -143,6 +170,9 @@ useEffect(()=>{
                   </div>
            </div>
       </section>
+
+
+      <ToastContainer/>
    </>
   )
 }

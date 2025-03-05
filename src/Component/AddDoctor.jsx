@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './AddDoctor.css'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify';
 
 export const AddDoctor = () => {
 const [name,setName] = useState("")
@@ -37,8 +38,31 @@ const [addressTwo,setAddressTwo] = useState("")
       setSpe('')
       setAddress('')
       setAddressTwo('')
+
+      toast.success('Add Successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+        });
     }).catch(err=>{
       console.log(err);
+      toast.error('Try again', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // transition: Bounce,
+        });
     })
     
   }
@@ -169,6 +193,8 @@ const [addressTwo,setAddressTwo] = useState("")
 
           <button onClick={handleSubmit} className='addDoc'>Add doctor</button>
       </div>
+
+      <ToastContainer />
     </>
   )
 }
