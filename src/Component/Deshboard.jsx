@@ -14,10 +14,10 @@ export const Deshboard = () => {
  const handleDelete =(item)=>{
    console.log(item._id);
    
-    axios.delete(`http://localhost:3000/appointDelete/${item._id}`).then(res=>{
+    axios.delete(`https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointDelete/${item._id}`).then(res=>{
         console.log(res)
         async function data(){
-            const data = await axios.get('http://localhost:3000/appointmentItem')
+            const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointmentItem')
             console.log(data.data)
             setList(data.data)
             
@@ -38,7 +38,7 @@ export const Deshboard = () => {
 
 useEffect(()=>{
    async function data(){
-    const data = await axios.get('http://localhost:3000/appointmentItem')
+    const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/appointmentItem')
     // console.log(data.data)
     setList(data.data)
     // console.log(data.data.length);
@@ -55,7 +55,7 @@ useEffect(()=>{
 
 useEffect(()=>{
     async function data(){
-        const data = await axios.get('http://localhost:3000/addDocItem')
+        const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/addDocItem')
         // console.log(data.data)
         setDocNum(data.data.length)
     }

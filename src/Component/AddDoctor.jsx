@@ -16,7 +16,7 @@ const [addressTwo,setAddressTwo] = useState("")
   const handleSubmit =()=>{
     console.log(name,email,password,expe,fees,about,spe,address,addressTwo);
 
-    axios.post('http://localhost:3000/addDoctor',{
+    axios.post('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/addDoctor',{
       name:name,
       email:email,
       password:password,

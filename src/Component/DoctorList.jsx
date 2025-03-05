@@ -7,7 +7,7 @@ export const DoctorList = () => {
 
   useEffect(()=>{
     async function data(){
-        const data = await axios.get('http://localhost:3000/addDocItem')
+        const data = await axios.get('https://doctor-backend-git-main-md-shahadat-alams-projects.vercel.app/addDocItem')
         console.log(data.data)
         // setDocNum(data.data.length)
         setList(data.data)
